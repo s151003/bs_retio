@@ -9,14 +9,24 @@ req.add_header("User-agent", headers)
 
 soup = BeautifulSoup(urllib2.urlopen(req))
 
+# symbol
+symbol = []
+divs = soup.find("div", id="dashboard-wrap").find_all("b")
+for div in divs:
+	symbol = symbol + [div.string]
+	
 # buy
+b_retio = []
 links = soup.find_all("i", class_="green-bar-nbr")
 for i in links:
-	b_resio = i.string
-	print b_resio
+	b_retio = b_retio + [i.string]
 
 # sell	
+s_retio = []
 links = soup.find_all("i", class_="red-bar-nbr")
 for i in links:
-	s_resio = i.string
-	print s_resio
+	s_retio = s_retio + [i.string]
+
+print symbol
+print b_retio	
+print s_retio
