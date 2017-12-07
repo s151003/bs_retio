@@ -1,32 +1,48 @@
-import urllib2
-from bs4 import BeautifulSoup
+def oanda():
+	import urllib2
+	from bs4 import BeautifulSoup
 
-url = "https://www.oanda.com/lang/ja/forex-trading/analysis/open-position-ratios"
-headers = 'Mozilla/5.0'
+	url = "https://www.oanda.com/lang/ja/forex-trading/analysis/open-position-ratios"
+	headers = 'Mozilla/5.0'
 
-req = urllib2.Request(url)
-req.add_header("User-agent", headers)
+	req = urllib2.Request(url)
+	req.add_header("User-agent", headers)
 
-soup = BeautifulSoup(urllib2.urlopen(req))
-graph = soup.find("div", id="content").find("ol")
+	soup = BeautifulSoup(urllib2.urlopen(req))
+	graph = soup.find("div", id="content").find("ol")
 
-#symbol
-symbol = []
-spans = graph.find_all("span", class_="position-ratio-label")
-for span in spans:
-	symbol = symbol + [span.string]
-print symbol
+	#symbol
+	symbol = []
+	spans = graph.find_all("span", class_="position-ratio-label")
+	for span in spans:
+		symbol = symbol + [span.string]
 
-#long
-b_retio = []
-spans = graph.find_all("span", class_="long-position")
-for span in spans:
-	b_retio.extend(span.stripped_strings)
-print b_retio
+	#long
+	b_retio = []
+	spans = graph.find_all("span", class_="long-position")
+	for span in spans:
+		b_retio.extend(span.stripped_strings)
 
-#long
-s_retio = []
-spans = graph.find_all("span", class_="short-position")
-for span in spans:
-	s_retio.extend(span.stripped_strings)
-print s_retio
+	#short
+	s_retio = []
+	spans = graph.find_all("span", class_="short-position")
+	for span in spans:
+		s_retio.extend(span.stripped_strings)
+	
+	return symbol,b_retio,s_retio
+
+	
+oandaSym, oandaB, oandaS = oanda()
+
+print oandaSym, oandaB, oandaS
+
+oandaS.append("haneisaren")
+
+count = 0
+for o in oandaSym:
+	
+	print o
+	print "B:",oandaB[count]
+	print "S:",oandaS[count]
+	count = count + 1
+print 
