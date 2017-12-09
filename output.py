@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from ig import gaitame
+from gaitame import gaitame
 from oanda import oanda
 from xm import xm
 
@@ -45,16 +45,15 @@ def disp(requestSym):
 	# なんで？？？？
 	# local variable 'oandaFound' referenced before assignment
 
-	print "------- Oanda -------"
-	print oandaSym[oanda]
-	print "B:",oandaB[oanda]
-	print "S:",oandaS[oanda]
-
-
 	print "------- 外為どっとこむ -------"
 	print gaitameSym[gaitame]
 	print "B:",gaitameB[gaitame]
 	print "S:",gaitameS[gaitame]
+
+	print "------- Oanda -------"
+	print oandaSym[oanda]
+	print "B:",oandaB[oanda]
+	print "S:",oandaS[oanda]
 
 	print "------- XM -------"
 	print xmSym[xm]
