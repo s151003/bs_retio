@@ -3,12 +3,14 @@
 from gaitame import gaitame
 from oanda import oanda
 from xm import xm
+from moneyparty import moneyparty
 
 requestSym = "USD/JPY"
 
 gaitameSym, gaitameB, gaitameS, gaitameFound = gaitame(requestSym)
 oandaSym, oandaB, oandaS, oandaFound = oanda(requestSym)
 xmSym, xmB, xmS, xmFound = xm(requestSym)
+moneySym, moneyB, moneyS, moneyFound = moneyparty(requestSym)
 
 
 def disp_all():
@@ -37,11 +39,20 @@ def disp_all():
 		print "S:",xmS[count],"%"
 		count = count + 1
 
+	print "------- マネパ -------"
+	count = 0
+	for o in moneySym:
+		print o
+		print "B:",moneyB[count]
+		print "S:",moneyS[count]
+		count = count + 1
+
 def disp(requestSym):
 	# 代入してからじゃないとエラー
 	oanda = oandaFound - 1
 	xm = xmFound - 1
 	gaitame = gaitameFound - 1
+	money = moneyFound
 	# なんで？？？？
 	# local variable 'oandaFound' referenced before assignment
 
@@ -60,6 +71,10 @@ def disp(requestSym):
 	print "B:",xmB[xm]
 	print "S:",xmS[xm]
 
+	print "------- マネパ -------"
+	print moneySym[money]
+	print "B:",moneyB[money]
+	print "S:",moneyS[money]
 
 if requestSym is "All":
 	disp_all()
