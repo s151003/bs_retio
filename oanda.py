@@ -17,10 +17,9 @@ def oanda(reqSym):
 	count = 0
 	symbol = []
 	spans = graph.find_all("span", class_="position-ratio-label")
+
 	for span in spans:
 		count = count + 1
-		print count
-		print span.string
 		if reqSym == span.string:
 			found = count
 		symbol = symbol + [span.string]

@@ -1,4 +1,6 @@
-def xm():
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+def xm(reqSym):
 	import urllib2
 	from bs4 import BeautifulSoup
 
@@ -10,10 +12,19 @@ def xm():
 
 	soup = BeautifulSoup(urllib2.urlopen(req),"lxml")
 
+	# スラッシュがないので取り除く
+	reqSym =  reqSym.replace('/', '')
+	if reqSym is "All":
+		found = "All"
+
 	# symbol
+	count = 0
 	symbol = []
 	divs = soup.find("div", id="dashboard-wrap").find_all("b")
 	for div in divs:
+		count = count + 1
+		if reqSym == div.string:
+			found = count
 		symbol = symbol + [div.string]
 
 	# buy
@@ -28,4 +39,4 @@ def xm():
 	for i in links:
 		s_retio = s_retio + [i.string]
 
-	return symbol, b_retio, s_retio
+	return symbol, b_retio, s_retio,found
