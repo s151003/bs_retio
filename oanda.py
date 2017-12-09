@@ -1,4 +1,4 @@
-def oanda():
+def oanda(reqSym):
 	import urllib2
 	from bs4 import BeautifulSoup
 
@@ -12,11 +12,17 @@ def oanda():
 	graph = soup.find("div", id="content").find("ol")
 
 	#symbol
+	count = 0
 	symbol = []
 	spans = graph.find_all("span", class_="position-ratio-label")
 	for span in spans:
+		count = count + 1
+		print count
+		print span.string
+		if reqSym == span.string:
+			found = count
 		symbol = symbol + [span.string]
-
+	print found
 	#long
 	b_retio = []
 	spans = graph.find_all("span", class_="long-position")
@@ -29,4 +35,4 @@ def oanda():
 	for span in spans:
 		s_retio.extend(span.stripped_strings)
 
-	return symbol,b_retio,s_retio
+	return symbol,b_retio,s_retio,found
