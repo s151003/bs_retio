@@ -8,7 +8,7 @@ def oanda():
 	req = urllib2.Request(url)
 	req.add_header("User-agent", headers)
 
-	soup = BeautifulSoup(urllib2.urlopen(req))
+	soup = BeautifulSoup(urllib2.urlopen(req),"lxml")
 	graph = soup.find("div", id="content").find("ol")
 
 	#symbol
@@ -28,21 +28,5 @@ def oanda():
 	spans = graph.find_all("span", class_="short-position")
 	for span in spans:
 		s_retio.extend(span.stripped_strings)
-	
+
 	return symbol,b_retio,s_retio
-
-	
-oandaSym, oandaB, oandaS = oanda()
-
-print oandaSym, oandaB, oandaS
-
-oandaS.append("haneisaren")
-
-count = 0
-for o in oandaSym:
-	
-	print o
-	print "B:",oandaB[count]
-	print "S:",oandaS[count]
-	count = count + 1
-print 

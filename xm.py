@@ -8,36 +8,24 @@ def xm():
 	req = urllib2.Request(url)
 	req.add_header("User-agent", headers)
 
-	soup = BeautifulSoup(urllib2.urlopen(req))
+	soup = BeautifulSoup(urllib2.urlopen(req),"lxml")
 
 	# symbol
 	symbol = []
 	divs = soup.find("div", id="dashboard-wrap").find_all("b")
 	for div in divs:
 		symbol = symbol + [div.string]
-		
+
 	# buy
 	b_retio = []
 	links = soup.find_all("i", class_="green-bar-nbr")
 	for i in links:
 		b_retio = b_retio + [i.string]
 
-	# sell	
+	# sell
 	s_retio = []
 	links = soup.find_all("i", class_="red-bar-nbr")
 	for i in links:
 		s_retio = s_retio + [i.string]
-	
+
 	return symbol, b_retio, s_retio
-
-xmSym, xmB, xmS = xm()
-
-#oandaS.append("haneisaren")
-
-count = 0
-for o in xmSym:
-	print o
-	print "B:",xmB[count]
-	print "S:",xmS[count]
-	count = count + 1
-print 

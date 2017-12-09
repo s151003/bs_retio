@@ -11,7 +11,7 @@ def gaitame():
 	driver.find_element_by_class_name('ga06-clone')
 	html = driver.page_source
 
-	soup = BeautifulSoup(html)
+	soup = BeautifulSoup(html,"lxml")
 	div = soup.find("div", id="ga06_1")
 
 	#symbol
