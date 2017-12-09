@@ -24,22 +24,17 @@ oandaS.append("haneisaren")
 count = 0
 print "------- Oanda -------"
 
-try:
-    if oandaFound:
-		oandaFound = oandaFound - 1
-		print oandaSym[oandaFound]
-		print "B:",oandaB[oandaFound]
-		print "S:",oandaS[oandaFound]
-    pass
-except NameError:
+if oandaFound == "All":
 	for o in oandaSym:
 		print o
 		print "B:",oandaB[count]
 		print "S:",oandaS[count]
 		count = count + 1
-    	pass
-
-
+else:
+	oandaFound = oandaFound - 1
+	print oandaSym[oandaFound]
+	print "B:",oandaB[oandaFound]
+	print "S:",oandaS[oandaFound]
 
 print "------- XM -------"
 count = 0

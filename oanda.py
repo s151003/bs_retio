@@ -11,6 +11,8 @@ def oanda(reqSym):
 	soup = BeautifulSoup(urllib2.urlopen(req),"lxml")
 	graph = soup.find("div", id="content").find("ol")
 
+	if reqSym == "All":
+		found = "All"
 	#symbol
 	count = 0
 	symbol = []
@@ -22,7 +24,7 @@ def oanda(reqSym):
 		if reqSym == span.string:
 			found = count
 		symbol = symbol + [span.string]
-	print found
+
 	#long
 	b_retio = []
 	spans = graph.find_all("span", class_="long-position")
