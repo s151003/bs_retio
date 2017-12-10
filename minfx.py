@@ -24,8 +24,6 @@ def minfx(reqSym):
 		if reqSym == img['alt']:
 			found = count
 		symbol.append(img['alt'])
-	print symbol
-	print found
 
 	# people はポジションの人数比率
 	# レシオはポジション数量比率
