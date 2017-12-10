@@ -27,7 +27,9 @@ def minfx(reqSym):
 	print symbol
 	print found
 
-
+	# people はポジションの人数比率
+	# レシオはポジション数量比率
+	
 	div = soup.find("div", id="ratiodatawrapper")
 	# buy
 	b_retio = []
