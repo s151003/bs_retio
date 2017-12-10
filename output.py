@@ -3,15 +3,16 @@
 from gaitame import gaitame
 from oanda import oanda
 from xm import xm
-from moneyparty import moneyparty
+from moneyparty import money
+from minfx import minfx
 
 requestSym = "USD/JPY"
 
 gaitameSym, gaitameB, gaitameS, gaitameFound = gaitame(requestSym)
 oandaSym, oandaB, oandaS, oandaFound = oanda(requestSym)
 xmSym, xmB, xmS, xmFound = xm(requestSym)
-moneySym, moneyB, moneyS, moneyFound = moneyparty(requestSym)
-
+moneySym, moneyB, moneyS, moneyFound = money(requestSym)
+minfxSym, minfxB, minfxS, minfxFound = minfx(requestSym)
 
 def disp_all():
 	print "------- 外為どっとこむ -------"
@@ -46,6 +47,14 @@ def disp_all():
 		print "B:",moneyB[count]
 		print "S:",moneyS[count]
 		count = count + 1
+	
+	print "------- みんなのFX -------"
+	count = 0
+	for o in minfxSym:
+		print o
+		print "B:",minfxB[count]
+		print "S:",minfxS[count]
+		count = count + 1
 
 def disp(requestSym):
 	# 代入してからじゃないとエラー
@@ -53,6 +62,7 @@ def disp(requestSym):
 	xm = xmFound - 1
 	gaitame = gaitameFound - 1
 	money = moneyFound
+	minfx = minfxFound - 1
 	# なんで？？？？
 	# local variable 'oandaFound' referenced before assignment
 
@@ -75,6 +85,11 @@ def disp(requestSym):
 	print moneySym[money]
 	print "B:",moneyB[money]
 	print "S:",moneyS[money]
+
+	print "------- みんなのFX -------"
+	print minfxSym[minfx]
+	print "B:",minfxB[minfx]
+	print "S:",minfxS[minfx]
 
 if requestSym is "All":
 	disp_all()
