@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-def moneyparty(reqSym):
+def money(reqSym):
     from selenium import webdriver
     from bs4 import BeautifulSoup
     from time import sleep
@@ -12,7 +12,6 @@ def moneyparty(reqSym):
 
     if reqSym == "All":
     	found = "All"
-		
     # long short
     spans = soup.find_all("tspan")
     count = 0
@@ -25,8 +24,6 @@ def moneyparty(reqSym):
         else:
             s_retio.extend(span.stripped_strings)
     driver.quit()
-	
-	
     # symbol
     # 手打ちしてやった・・・
     symbols = ["USD/JPY","EUR/JPY","AUD/JPY","NZD/JPY","TRY/JPY","MXN/JPY","GBP/JPY","CHF/JPY","CAD/JPY","EUR/USD","GBP/USD","ZAR/JPY","HKD/JPY","SGD/JPY","AUD/USD","EUR/AUD","EUR/GBP","AUD/NZD","GBP/AUD","NZD/USD"]
@@ -35,5 +32,5 @@ def moneyparty(reqSym):
         if reqSym == symbols[count]:
     		found = count
         count =+ 1
-    print found
+	
     return symbols,b_retio,s_retio,found

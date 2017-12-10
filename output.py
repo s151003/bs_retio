@@ -3,7 +3,7 @@
 from gaitame import gaitame
 from oanda import oanda
 from xm import xm
-from moneyparty import money
+from money import money
 from minfx import minfx
 
 requestSym = "USD/JPY"
