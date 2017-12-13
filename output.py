@@ -66,28 +66,24 @@ def disp(requestSym):
 	# なんで？？？？
 	# local variable 'oandaFound' referenced before assignment
 
+	print requestSym,"のひりつ"
 	print "------- 外為どっとこむ -------"
-	print gaitameSym[gaitame]
 	print "B:",gaitameB[gaitame]
 	print "S:",gaitameS[gaitame]
 
 	print "------- Oanda -------"
-	print oandaSym[oanda]
 	print "B:",oandaB[oanda]
 	print "S:",oandaS[oanda]
 
 	print "------- XM -------"
-	print xmSym[xm]
 	print "B:",xmB[xm]
 	print "S:",xmS[xm]
 
 	print "------- マネパ -------"
-	print moneySym[money]
 	print "B:",moneyB[money]
 	print "S:",moneyS[money]
 
 	print "------- みんなのFX -------"
-	print minfxSym[minfx]
 	print "B:",minfxB[minfx]
 	print "S:",minfxS[minfx]
 
