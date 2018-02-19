@@ -6,7 +6,10 @@ from xm import xm
 from money import money
 from minfx import minfx
 
-requestSym = "USD/JPY"
+print ('通貨ペアを入力')
+print ('全て表示する場合はAllと入力(WIP)')
+requestSym = raw_input('>>> ')
+print requestSym + ('収集開始')
 
 gaitameSym, gaitameB, gaitameS, gaitameFound = gaitame(requestSym)
 oandaSym, oandaB, oandaS, oandaFound = oanda(requestSym)
@@ -87,7 +90,9 @@ def disp(requestSym):
 	print "B:",minfxB[minfx]
 	print "S:",minfxS[minfx]
 
+	
 if requestSym is "All":
 	disp_all()
 else:
 	disp(requestSym)
+
